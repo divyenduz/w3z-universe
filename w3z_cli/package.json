@@ -1,0 +1,33 @@
+{
+  "name": "w3z",
+  "version": "0.0.3",
+  "description": "w3z is a cli interface for w3z.in | A hippity url shortener",
+  "main": "index.js",
+  "bin": {
+    "w3z": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/divyenduz/w3z_cli.git"
+  },
+  "keywords": [
+    "w3z",
+    "url",
+    "shortener",
+    "cli"
+  ],
+  "author": "Divyendu Singh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/divyenduz/w3z_cli/issues"
+  },
+  "homepage": "https://github.com/divyenduz/w3z_cli#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "commander": "^2.9.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

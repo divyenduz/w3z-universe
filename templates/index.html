@@ -1,0 +1,56 @@
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="0MykK-LXcQqTlKa8D_PVxi21aZOXB2fd5MeXOyXE7dw" />
+
+  <title>
+    w3z | shorten url
+  </title>
+
+  <link rel="stylesheet" href="static/css/bundle.css" charset="utf-8">
+<style type="text/css">
+body{
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+</style>
+
+</head>
+<body>
+  <div class="child">
+
+    <div>
+        <a class="logo" href="/">W3Z</a>
+    </div>
+
+    {% include "state/initial.html" %}
+
+    {% include "state/after.html" %}
+
+    <br /><br />
+    <div class="promo_parent">
+
+    {% for promo in promo_list %}
+        {% with promo=promo %}
+            {% include "promo.html" %}
+        {% endwith %}
+    {% endfor %}
+
+    </div>
+
+    <style>
+      .footer{
+        align-self: flex-end;
+      }
+    </style>
+    <div class="footer">
+      <a style="text-decoration: none; font-size: 14; color: #777;" href="/privacy">Privacy</a>
+    </div>
+  </div>
+<script src="static/js/bundle.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

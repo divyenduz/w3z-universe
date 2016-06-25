@@ -1,0 +1,9 @@
+*.pyc
+node_modules/
+static/js/bundle.js
+w3z.db
+.DS_Store
+v/
+.idea/
+config.json
+__pycache__/
