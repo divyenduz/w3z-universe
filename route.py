@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, abort, render_template
+from flask import Flask, request, redirect, abort, render_template, Response
 import json, hashlib
 from db import set_link, get_link, get_promos
 from config import get_config
@@ -20,9 +20,18 @@ def index():
     return render_template('index.html', promo_list=promo_list)
 
 
+@app.route('/slack', methods=['GET', 'POST'])
+def slack():
+    text = request.form.get('text').replace('https://', '').replace('http://', '')
+    query = {'protocol':'http://', 'url': text}
+    data = json.loads(work(query))
+    return Response(json.dumps({'response_type': 'in_channel', 'text': data['u']}), mimetype='application/json')
+
+
 @app.route('/work', methods=['POST'])
-def work():
-    query = request.get_json()
+def work(query = None):
+    if query is None:
+    	query = request.get_json()
     url = query['protocol'] + query['url'];
     u = get_link(url, True)
     if u is not None:
@@ -34,7 +43,7 @@ def work():
         u_hash = md5.hexdigest()[:magic]
 
         # Trying to avoid the hash being work or config
-        banned_word_list = ['work', 'config', 'p']
+        banned_word_list = ['work', 'config', 'p', 'slack']
 
         while (u_hash in banned_word_list):
             magic += 1
