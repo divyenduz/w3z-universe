@@ -8,7 +8,7 @@ class Affiliate:
         return self._apply_affiliate_token(['flipkart.com'], 'affid=divyenduzg', url)
 
     def _attach_amazon(self, url):
-        return self._apply_affiliate_token(['amazon.in'], 'tag=divyendusingh-21', url)
+        return self._apply_affiliate_token(['amazon.in', 'amazon.com'], 'tag=divyendusingh-21', url)
 
     def _apply_affiliate_token(self, affiliate_domains, affiliate_token, url):
         if any(one_domain in url for one_domain in affiliate_domains):
