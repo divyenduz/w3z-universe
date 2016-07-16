@@ -4,6 +4,7 @@ from flask import Flask, request, redirect, abort, render_template, Response
 import hashlib
 from db import set_link, get_link, get_promos
 from config import get_config
+from w3z_app import affiliate
 
 config, debug = get_config()
 
@@ -33,8 +34,11 @@ def slack():
 @app.route('/work', methods=['POST'])
 def work(query = None):
     if query is None:
-    	query = request.get_json()
-    url = query['protocol'] + query['url'];
+        query = request.get_json()
+    url = query['protocol'] + query['url']
+
+    url = affiliate.attach_affiliates(url)
+
     u = get_link(url, True)
     if u is not None:
         return json.dumps({'u': config['api_endpoint'] + '/' + u})

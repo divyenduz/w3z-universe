@@ -19,78 +19,56 @@ var App = (function() {
     return ValidURL.isUri(url);
   };
 
-  var attachAffiliate = function(url){
-    if (url.indexOf('flipkart.com')>-1){
-      if(url.indexOf('?')>-1){
-        url = url + '&affid=divyenduzg';
-      }else{
-        url = url + '?affid=divyenduzg';
-      }
-      return url;
+  return {
+
+  copyButton: copyButton,
+  shortenButton: shortenButton,
+  shortenAgainButton: shortenAgainButton,
+
+  handleShortenButtonClick: function(){
+    var link = linkInput.value;
+
+    if (link.trim() === '') {
+      alert('Please enter a valid URL');
+      return;
     }
 
-    if (url.indexOf('amazon.in')>-1){
-      if(url.indexOf('?')>-1){
-        url = url + '&tag=divyendusingh-21';
-      }else{
-        url = url + '?tag=divyendusingh-21';
-      }
-      return url;
+    // Try to make a valid link by appending http://
+    // If the link was found invalid
+    if(!isValidLink(link)){
+      link = 'http://' + link;
     }
-    return url;
+
+    // Finally checking if the link is valid or not
+    if(isValidLink(link)){
+      linkInput.value = link;
+
+      Service.processLink(link)
+      .then((data)=>{
+        initialDiv.style.display = 'none';
+        afterDiv.style.display = 'block';
+
+        shortURL.innerHTML = data.u;
+        shortURL.href = data.u;
+      });
+    }else{
+      alert('Please enter a valid URL');
+    }
+  },
+
+  handleShortenAgainButtonClick: function(){
+    initialDiv.style.display = 'flex';
+    afterDiv.style.display = 'none';
+    linkInput.value = "";
+  },
+
+  handleKeyDown: function(event) {
+    if (event.keyCode == 13 /*enter*/) {
+      App.handleShortenButtonClick();
+    }
+  },
+
   };
-
-	return {
-
-    copyButton: copyButton,
-    shortenButton: shortenButton,
-    shortenAgainButton: shortenAgainButton,
-
-    handleShortenButtonClick: function(){
-      var link = linkInput.value;
-
-      if (link.trim() === '') {
-        alert('Please enter a valid URL');
-        return;
-      }
-
-      // Try to make a valid link by appending http://
-      // If the link was found invalid
-      if(!isValidLink(link)){
-        link = 'http://' + link;
-      }
-
-      // Finally checking if the link is valid or not
-      if(isValidLink(link)){
-        link = attachAffiliate(link);
-        linkInput.value = link;
-
-        Service.processLink(link)
-        .then((data)=>{
-          initialDiv.style.display = 'none';
-          afterDiv.style.display = 'block';
-
-          shortURL.innerHTML = data.u;
-          shortURL.href = data.u;
-        });
-      }else{
-        alert('Please enter a valid URL');
-      }
-    },
-
-    handleShortenAgainButtonClick: function(){
-      initialDiv.style.display = 'flex';
-      afterDiv.style.display = 'none';
-      linkInput.value = "";
-    },
-
-    handleKeyDown: function(event) {
-      if (event.keyCode == 13 /*enter*/) {
-        App.handleShortenButtonClick();
-      }
-    },
-
-	};
 }());
 
 // self executing function here
