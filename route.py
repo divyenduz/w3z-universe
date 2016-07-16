@@ -1,10 +1,9 @@
 import json
 
 from flask import Flask, request, redirect, abort, render_template, Response
-import hashlib
 from db import set_link, get_link, get_promos
 from config import get_config
-from w3z_app import affiliate
+from w3z_app import affiliate, core
 
 config, debug = get_config()
 
@@ -43,33 +42,13 @@ def work(query = None):
     if u is not None:
         return json.dumps({'u': config['api_endpoint'] + '/' + u})
     else:
-        magic = 3
-        md5 = hashlib.md5()
-        md5.update(url.encode('utf-8'))
-        u_hash = md5.hexdigest()[:magic]
-
-        # Trying to avoid the hash being work or config
-        banned_word_list = ['work', 'config', 'p', 'slack']
-
-        while (u_hash in banned_word_list):
-            magic += 1
-            u_hash = md5.hexdigest()[:magic]
-
+        u_hash = core.get_hash(url)
         u = get_link(u_hash)
-
         while u is not None:
-            magic += 1
-            md5.update(url.encode('utf-8'))
-            u_hash = md5.hexdigest()[:magic]
-
-            while (u_hash in banned_word_list):
-                magic += 1
-                u_hash = md5.hexdigest()[:magic]
-
+            core.magic += 1
+            u_hash = core.get_hash(url)
             u = get_link(u_hash)
-
         set_link(url, u_hash)
-
         return json.dumps({'u': config['api_endpoint'] + '/' + u_hash})
 
 
