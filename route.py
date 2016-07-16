@@ -2,7 +2,7 @@ import json
 
 from flask import Flask, request, redirect, abort, render_template, Response
 from config import get_config
-from w3z_app import affiliate, core, db
+from w3z_app import affiliate, core, db, ads
 
 config, debug = get_config()
 
@@ -17,7 +17,7 @@ def not_found(error):
 
 @app.route('/')
 def index():
-    promo_list = db.get_promos()
+    promo_list = ads.get_promos()
     return render_template('index.html', promo_list=promo_list)
 
 
