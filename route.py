@@ -1,5 +1,7 @@
+import json
+
 from flask import Flask, request, redirect, abort, render_template, Response
-import json, hashlib
+import hashlib
 from db import set_link, get_link, get_promos
 from config import get_config
 
