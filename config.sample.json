@@ -4,12 +4,14 @@
     "api_endpoint": "http://localhost:5000",
     "gzip": false,
     "minify": false,
-    "sendgrid_api_key": "SENDGRID_API_KEY"
+    "sendgrid_api_key": "SENDGRID_API_KEY",
+    "email_for_db_backup": "EMAIL"
   },
   "prod" : {
-    "api_endpoint": "http://w3z.in",
+    "api_endpoint": "API_ENDPOINT",
     "gzip": true,
     "minify": true,
-    "sendgrid_api_key": "SENDGRID_API_KEY"
+    "sendgrid_api_key": "SENDGRID_API_KEY",
+    "email_for_db_backup": "EMAIL"
   }
 }
