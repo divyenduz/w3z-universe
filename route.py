@@ -81,7 +81,6 @@ def privacy():
 @app.route('/<slug>', methods=['GET'])
 def open_link(slug=None):
     link = get_link(slug)
-
     if link is not None:
         print(link)
         return redirect(link, code=301)
