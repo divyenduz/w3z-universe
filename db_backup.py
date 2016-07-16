@@ -1,4 +1,6 @@
-import datetime, json, sendgrid
+import datetime
+
+import sendgrid
 from config import get_config
 
 config, debug = get_config()
