@@ -1,9 +1,8 @@
 import json
 
 from flask import Flask, request, redirect, abort, render_template, Response
-from db import set_link, get_link, get_promos
 from config import get_config
-from w3z_app import affiliate, core
+from w3z_app import affiliate, core, db
 
 config, debug = get_config()
 
@@ -18,7 +17,7 @@ def not_found(error):
 
 @app.route('/')
 def index():
-    promo_list = get_promos()
+    promo_list = db.get_promos()
     return render_template('index.html', promo_list=promo_list)
 
 
@@ -38,17 +37,17 @@ def work(query = None):
 
     url = affiliate.attach_affiliates(url)
 
-    u = get_link(url, True)
+    u = db.get_link(url, True)
     if u is not None:
         return json.dumps({'u': config['api_endpoint'] + '/' + u})
     else:
         u_hash = core.get_hash(url)
-        u = get_link(u_hash)
+        u = db.get_link(u_hash)
         while u is not None:
             core.magic += 1
             u_hash = core.get_hash(url)
-            u = get_link(u_hash)
-        set_link(url, u_hash)
+            u = db.get_link(u_hash)
+        db.set_link(url, u_hash)
         return json.dumps({'u': config['api_endpoint'] + '/' + u_hash})
 
 
@@ -59,7 +58,7 @@ def privacy():
 
 @app.route('/<slug>', methods=['GET'])
 def open_link(slug=None):
-    link = get_link(slug)
+    link = db.get_link(slug)
     if link is not None:
         print(link)
         return redirect(link, code=301)
