@@ -62,7 +62,7 @@ def open_link(slug=None):
     link = db.get_link(slug)
     if link is not None:
         print(link)
-        if any(one_domain in link for one_domain in domains):
+        if any(one_domain in link for one_domain in domains) or 'http://' in link:
             return redirect(link, code=301)
         else:
             return render_template('preview.html', link=link)
