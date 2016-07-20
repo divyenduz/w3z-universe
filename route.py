@@ -30,7 +30,7 @@ def slack():
 
 
 @app.route('/work', methods=['POST'])
-def work(query = None):
+def work(query=None):
     if query is None:
         query = request.get_json()
     url = query['protocol'] + query['url']
@@ -58,10 +58,14 @@ def privacy():
 
 @app.route('/<slug>', methods=['GET'])
 def open_link(slug=None):
+    domains = ['amazon.in', 'amazon.com', 'flipkart.com', 'google.com']
     link = db.get_link(slug)
     if link is not None:
         print(link)
-        return redirect(link, code=301)
+        if any(one_domain in link for one_domain in domains):
+            return redirect(link, code=301)
+        else:
+            return render_template('preview.html', link=link)
     else:
         abort(404)
 
