@@ -2,6 +2,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="0MykK-LXcQqTlKa8D_PVxi21aZOXB2fd5MeXOyXE7dw"/>
+    {% if link %}
+    <meta http-equiv="refresh" content="0;URL={{link}}">
+    {% endif %}
 
     <title>
         w3z | shorten url
@@ -10,11 +13,11 @@
     <link rel="stylesheet" href="static/css/bundle.css" charset="utf-8">
     <style type="text/css">
         body{
-        font-family: sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
     </style>
 

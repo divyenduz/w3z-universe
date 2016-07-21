@@ -1,16 +1,16 @@
 <html>
-{% include "partials/header.html" %}
+{% with link=link %}
+    {% include "partials/header.html" %}
+{% endwith %}
 <body>
 <div class="continue_box">
     <span class="continue_text">
-        We are loading the original site in our domain to protect you from potentially harmful URLs
+        Redirecting to <br />{{ link }}
     </span>
-    <a class="continue_button" href="{{ link }}">Continue to original site</a>
 </div>
 <div>
     <a class="logo" href="/" style="font-size: 40px;">W3Z</a>
 </div>
-<iframe style="width:100%;height: 100%;border: 1px solid #ccc" src="{{ link }}" frameborder="0"></iframe>
 {% include "partials/footer.html" %}
 </body>
 </html>
