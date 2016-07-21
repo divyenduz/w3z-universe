@@ -50,9 +50,11 @@ var App = (function() {
 
         shortURL.innerHTML = data.u;
         shortURL.href = data.u;
+        ga('send', 'event', 'click', link, data.u)
       });
     }else{
       alert('Please enter a valid URL');
+      ga('send', 'event', 'click', link, 'invalid')
     }
   },
 
@@ -60,6 +62,7 @@ var App = (function() {
     initialDiv.style.display = 'flex';
     afterDiv.style.display = 'none';
     linkInput.value = "";
+    ga('send', 'event', 'click', shortURL.href, 'shorten_again')
   },
 
   handleKeyDown: function(event) {
