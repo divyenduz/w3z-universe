@@ -30,7 +30,7 @@ var Service = {
       API_ENDPOINT + "/work",
       {
         protocol: link.protocol + '//',
-        url: link.hostname + link.pathname + link.search + link.hash
+        url: link.host + link.pathname + link.search + link.hash
       })
       .then(function(response){
         return response.data
