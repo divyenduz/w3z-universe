@@ -1,6 +1,7 @@
 {
   "env": "dev",
   "dev" : {
+    "site_name": "w3z local",
     "api_endpoint": "http://localhost:5000",
     "gzip": false,
     "minify": false,
@@ -8,6 +9,7 @@
     "email_for_db_backup": "EMAIL"
   },
   "prod" : {
+    "site_name": "w3z local",
     "api_endpoint": "API_ENDPOINT",
     "gzip": true,
     "minify": true,

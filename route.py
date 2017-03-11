@@ -18,7 +18,7 @@ def not_found(error):
 @app.route('/')
 def index():
     promo_list = ads.get_promos()
-    return render_template('index.html', promo_list=promo_list)
+    return render_template('index.html', promo_list=promo_list, config=config)
 
 
 @app.route('/slack', methods=['GET', 'POST'])
@@ -53,7 +53,7 @@ def work(query=None):
 
 @app.route('/privacy', methods=['GET'])
 def privacy():
-    return render_template('privacy.html')
+    return render_template('privacy.html', config=config)
 
 
 @app.route('/<slug>', methods=['GET'])
@@ -65,7 +65,7 @@ def open_link(slug=None):
         if any(one_domain in link for one_domain in domains) or 'http://' in link:
             return redirect(link, code=301)
         else:
-            return render_template('preview.html', link=link)
+            return render_template('preview.html', link=link, config=config)
     else:
         abort(404)
 
