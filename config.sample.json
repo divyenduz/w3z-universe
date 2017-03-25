@@ -6,7 +6,8 @@
     "gzip": false,
     "minify": false,
     "sendgrid_api_key": "SENDGRID_API_KEY",
-    "email_for_db_backup": "EMAIL"
+    "email_for_db_backup": "EMAIL",
+    "GA": "GA ID"
   },
   "prod" : {
     "site_name": "w3z local",
@@ -14,6 +15,7 @@
     "gzip": true,
     "minify": true,
     "sendgrid_api_key": "SENDGRID_API_KEY",
-    "email_for_db_backup": "EMAIL"
+    "email_for_db_backup": "EMAIL",
+    "GA": "GA ID"
   }
 }
