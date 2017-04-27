@@ -10,6 +10,10 @@
         w3z | shorten url
     </title>
 
+    {% if 'favicon' in config %}
+    <link rel="shortcut icon" type="image/png" href="https://s3-ap-southeast-1.amazonaws.com/static.w3z.in/assets/w3z.png"/>
+    {% endif %}
+
     <link rel="stylesheet" href="static/css/bundle.css" charset="utf-8">
     <style type="text/css">
         body{

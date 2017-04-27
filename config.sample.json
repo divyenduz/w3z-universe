@@ -7,7 +7,8 @@
     "minify": false,
     "sendgrid_api_key": "SENDGRID_API_KEY",
     "email_for_db_backup": "EMAIL",
-    "GA": "GA ID"
+    "GA": "GA ID",
+    "favicon": "https://s3-ap-southeast-1.amazonaws.com/static.w3z.in/assets/w3z.png"
   },
   "prod" : {
     "site_name": "w3z local",
@@ -16,6 +17,7 @@
     "minify": true,
     "sendgrid_api_key": "SENDGRID_API_KEY",
     "email_for_db_backup": "EMAIL",
-    "GA": "GA ID"
+    "GA": "GA ID",
+    "favicon": "https://s3-ap-southeast-1.amazonaws.com/static.w3z.in/assets/w3z.png"
   }
 }
