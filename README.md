@@ -4,7 +4,7 @@ all codebase related to w3z including site, chrome extension, cli
 # setup
 
 Copy config.sample.json to config.json and change parameters as required.
-Environment can be "dev" or "prod"
+In config.json, environment can be maintained as "dev" or "prod", also, accordingly maintain key name "prod"(already maintained in file) as "dev" or "prod" as per the environment defined.
 
 Install the required system dependencies, these instructions are for ubuntu / debian :-
 
