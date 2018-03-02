@@ -23,7 +23,8 @@ def index():
 
 @app.route('/slack', methods=['GET', 'POST'])
 def slack():
-    text = request.form.get('text').replace('https://', '').replace('http://', '')
+    text = request.form.get('text').replace(
+        'https://', '').replace('http://', '')
     query = {'protocol': 'http://', 'url': text}
     data = json.loads(work(query))
     return Response(json.dumps({'response_type': 'in_channel', 'text': data['u']}), mimetype='application/json')

@@ -1,3 +1,4 @@
+.vscode/
 *.pyc
 node_modules/
 static/js/bundle.js

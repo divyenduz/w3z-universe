@@ -4,7 +4,7 @@ import hashlib
 class Core:
     magic = 3
 
-    def get_hash(self, url):
+    def get_hash(self, url: str):
         md5 = hashlib.md5()
         md5.update(url.encode('utf-8'))
         u_hash = md5.hexdigest()[:self.magic]
