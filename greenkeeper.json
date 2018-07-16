@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "w3z-graphql/frontend/package.json"
+      ]
+    }
+  }
+}
