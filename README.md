@@ -1,4 +1,7 @@
 # w3z-universe
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/divyenduz/w3z-universe.svg)](https://greenkeeper.io/)
+
 all codebase related to w3z including site, chrome extension, cli
 
 # setup
