@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "stepType": "UpdateField",
+      "model": "links",
+      "name": "url",
+      "isUnique": true
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "links",
+      "name": "converted_url",
+      "isUnique": true
+    }
+  ]
+}
