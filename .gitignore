@@ -8,3 +8,4 @@ v/
 .idea/
 config.json
 __pycache__/
+.serverless/
