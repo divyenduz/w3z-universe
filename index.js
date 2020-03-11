@@ -1,6 +1,6 @@
-const { Photon } = require('@generated/photon')
+const { PrismaClient } = require('@prisma/client')
 
-const photon = new Photon()
+const prisma = new PrismaClient()
 
 module.exports.handler = async event => {
   if (event.httpMethod === 'GET') {
@@ -19,7 +19,7 @@ module.exports.handler = async event => {
     }
 
     try {
-      const link = await photon.links.findOne({
+      const link = await prisma.links.findOne({
         where: {
           converted_url,
         },
@@ -31,6 +31,7 @@ module.exports.handler = async event => {
         },
       }
     } catch (e) {
+      console.log(e)
       return {
         statusCode: 404,
         headers: {
