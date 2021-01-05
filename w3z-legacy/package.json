@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.11.1",
+    "axios": "^0.21.1",
     "clipboard": "^1.5.10",
     "valid-url": "^1.0.9"
   },
